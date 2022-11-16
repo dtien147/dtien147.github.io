@@ -6,6 +6,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jschannel/1.0.0-git-commit1-8c4f7eb/jschannel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <button onClick="onLoginClick()">Login</button>
@@ -25,11 +26,22 @@
                 }).then(_ => {
                     document.hasStorageAccess().then(hasAccess => {
                         console.log("hasAccess:", hasAccess);
-                        window.localStorage.setItem('foo', 'bar');
-                    })
+                        axios.get('/cookie')
+                            .then(function (response) {
+                                // handle success
+                                console.log(response);
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                            })
+                            .then(function () {
+                                // always executed
+                            });
+                    });
                 }).catch((err) => {
                     console.log("hasStorageAccess() failed", err);
-                });
+                });                
             };
         </script>
     </body>
