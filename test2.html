@@ -1,0 +1,24 @@
+<div>
+    Hello
+</div>
+<script>
+    function checkAccess() {
+        document.hasStorageAccess()
+            .then(hasAccess => {
+                console.log('HAS ACCESS', hasAccess);
+                if (!hasAccess) {
+                    return document.requestStorageAccess();
+                }
+            }).then(_ => {
+            // Now we have unpartitioned storage access for the next 30 days!
+            //
+            // …
+            }).catch(_ => {
+            // error obtaining storage access.
+            });
+    }
+
+    (function () {
+        checkAccess();
+    })()
+</script>
