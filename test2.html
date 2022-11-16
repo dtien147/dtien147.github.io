@@ -1,24 +1,36 @@
-<div>
-    Hello
-</div>
-<script>
-    function checkAccess() {
-        document.hasStorageAccess()
-            .then(hasAccess => {
-                console.log('HAS ACCESS', hasAccess);
-                if (!hasAccess) {
-                    return document.requestStorageAccess();
-                }
-            }).then(_ => {
-            // Now we have unpartitioned storage access for the next 30 days!
-            //
-            // …
-            }).catch(_ => {
-            // error obtaining storage access.
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Child Domain</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jschannel/1.0.0-git-commit1-8c4f7eb/jschannel.min.js"></script>
+    </head>
+    <body>
+        <button onClick="onLoginClick()">Login</button>
+        <script type="text/javascript">
+            var chan = Channel.build({
+                window: window.parent,
+                origin: "*",
+                scope: "testScope"
             });
-    }
 
-    (function () {
-        checkAccess();
-    })()
-</script>
+            let onLoginClick = function(trans, params) {
+                document.hasStorageAccess().then(hasAccess => {
+                    if (!hasAccess) {
+                        console.log("no access - requesting access");
+                        return document.requestStorageAccess();
+                    }
+                }).then(_ => {
+                    document.hasStorageAccess().then(hasAccess => {
+                        console.log("hasAccess:", hasAccess);
+                        window.localStorage.setItem('foo', 'bar');
+                    })
+                }).catch((err) => {
+                    console.log("hasStorageAccess() failed", err);
+                });
+            };
+        </script>
+    </body>
+</html>

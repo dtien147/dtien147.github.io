@@ -1,17 +1,26 @@
-<iframe 
-    src="https://dtien147.github.io/test2.html"
-    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-downloads allow-storage-access-by-user-activation"
-    style="width:100vw;height:100vh"
->
-</iframe>
-<button onclick="update1()">Update 1</button>
-<button onclick="update2()">Update 2</button>
-<script>
-    function update1() {
-        document.getElementsByTagName("iframe")[0].setAttribute("src", "https://demo.docusign.net/Signing/SessionTimeout.aspx?fi=230f89df-896f-418c-81af-7ffb9804b50f");
-    }
-
-    function update2() {
-        document.getElementsByTagName("iframe")[0].setAttribute("src", "https://demo.docusign.net/Signing/MTRedeem/v1/e310c58a-8d54-4cec-a060-dc4dc81062a7?slt=eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQYAAAABAAMABwCAs4jIL8LaSAgAgFOaT1HC2kgYAAEAAAAAAAAAIQCEAgAAeyJUb2tlbklkIjoiYzMyZjkwZDAtOGYyMy00MzZhLWFlNTctN2Q1MDgxZGRkZjAxIiwiRXhwaXJhdGlvbiI6IjIwMjItMTEtMDlUMDg6NTc6NTErMDA6MDAiLCJJc3N1ZWRBdCI6IjIwMjItMTEtMDlUMDg6NTI6NTEuNTUyNDQzNCswMDowMCIsIlJlc291cmNlSWQiOiJkYmViYjZlZi1iMzM4LTRmMWUtYjBmNC0wNzJiZGNlNmNiNzAiLCJSZXNvdXJjZXMiOiJ7XCJFbnZlbG9wZUlkXCI6XCJkYmViYjZlZi1iMzM4LTRmMWUtYjBmNC0wNzJiZGNlNmNiNzBcIixcIkFjdG9yVXNlcklkXCI6XCIyZjdiYmIxOC1iMGNiLTRlNDAtYjIxMS0wNDNlNGU4NTlkYWRcIixcIkZha2VRdWVyeVN0cmluZ1wiOlwidD02YTA0NGU2NS0yODJlLTQ1NjAtYjM0Ny05ODgyOWUzMTc4ZjhcIixcIkludGVncmF0b3JLZXlcIjpcIjFkNDljZTNkLTI1NjEtNDY3OC1iZDk3LTYwZWFiZDIyYTNjZFwifSIsIlRva2VuVHlwZSI6MSwiQXVkaWVuY2UiOiIyNWUwOTM5OC0wMzQ0LTQ5MGMtOGU1My0zYWIyY2E1NjI3YmYiLCJSZWRpcmVjdFVyaSI6Imh0dHBzOi8vZGVtby5kb2N1c2lnbi5uZXQvU2lnbmluZy9TdGFydEluU2Vzc2lvbi5hc3B4IiwiSGFzaEFsZ29yaXRobSI6MCwiSGFzaFJvdW5kcyI6MCwiVG9rZW5TdGF0dXMiOjAsIklzU2luZ2xlVXNlIjpmYWxzZX0_AAB7wHowwtpI.E7v2jkxv9Oaj5DaltIfFvn4J4ImevJNcLdPG_9LykCiQFPwHSbwTQtyJBQLWS5enTOoTZtgg63u9147-_ekUwHSPbbRLFxELdrXxw7B6fQ6Nbr7sam3QHRmxP9kyNScF8NuHjBo3fBxSmPIhPrdEIrHWM4nDuDucrZe8-wMeyrSyHnW_XKkfySI_r3rirOk3MNZ73SpeEQ998MB-z6jp5iGvagqvHu9r_6aClMfv87SJ16voQq6yjBUVEDqKwCVUcgsNKW-Pv5FZHugvTh_zeh9W1JaqXhs6iL5CQ3pa-NyzugZLS6s_Ifi4rZHATCtozIZBErXww2SLy9xHt8F7ww");
-    }
-</script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Parent Domain</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jschannel/1.0.0-git-commit1-8c4f7eb/jschannel.min.js"></script>
+    </head>
+    <body>
+        <div>
+            Cookies: <ul class="cookie-data"></ul>
+        </div>
+        <iframe 
+            id="rpc-gateway"
+            src="https://pages.github.com//test2.html"
+            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin"></iframe>
+        <script type="text/javascript">            
+            var chan = Channel.build({
+                window: document.getElementById("rpc-gateway").contentWindow,
+                origin: "*",
+                scope: "testScope"
+            });
+        </script>
+    </body>
+</html>
